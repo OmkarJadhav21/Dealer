@@ -1,0 +1,55 @@
+<div style="background-color:#f0f0f0">
+  <div style="text-align:center">
+    <h1>Login</h1>
+  </div>
+  <div class="card">
+    <div class="card-title Imgst">
+      <img src="../../assets/dealdool.png" alt="LOGIN" class="ImgS">
+    </div>
+    <hr>
+    <div class="container my-5">
+      <div class="row fildadjst">
+        <div class="col-md-6 mx-auto">
+          <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
+            <div class="form-group">
+              <input type="text" name="Username" class="form-control" (click)="placeholderF('u')" required ngModel>
+              <label [ngClass]="{'place':fun,'form-control-placeholder':true}" (click)="placeholderFun('u')">Username</label>
+            </div>
+            <div class="form-group">
+              <input type="password" name="Password" class="form-control" (click)="placeholderF('p')" required ngModel>
+              <label [ngClass]="{'place':funp,'form-control-placeholder':true}" (click)="placeholderFun('p')">Password</label>
+            </div>
+            <div>
+              <input type="submit" class="btn btn-danger" value="LOGIN">
+            </div>
+          </form>
+
+        </div>
+      </div>
+    </div>
+    <div class="forHR">
+      <div class="orLogin">
+        <span><b>Or</b></span>
+      </div>
+      <hr>
+      
+      <div style="margin-left: 39%;">
+        <!--Google +-->
+        <a style="margin-right: 10%;">
+          <i class="fa fa-google" (click)="withGoogle()"> </i>
+        </a>
+        <!--Facebook-->
+        <a style="margin-right: 10%;">
+          <i class="fa fa-facebook" (click)="withFacebook()"> </i>
+        </a>
+        <!--Github-->
+        <a style="margin-right: 10%;">
+          <i class="fa fa-twitter" (click)="withGithub()"></i>
+        </a>
+      </div>
+    </div>
+
+    <div class="failmsg">{{loginSuccess}}</div>
+  </div>
+  <br>
+</div>

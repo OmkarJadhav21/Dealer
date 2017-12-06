@@ -1,3 +1,4 @@
+import { LoginService } from './../AllServices/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, ValidationErrors } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
@@ -11,7 +12,8 @@ import { Validators } from '@angular/forms';
 export class AddCustmomerComponent implements OnInit {
 
   addUserFrm: FormGroup;
-  constructor(private fb: FormBuilder) { }
+  constructor(private fb: FormBuilder,
+              private LoginService:LoginService) { }
 
   ngOnInit() {
     this.addUserFrm = this.fb.group({
@@ -41,6 +43,8 @@ export class AddCustmomerComponent implements OnInit {
 
 
   submitUser() {
-    console.log(this.addUserFrm);
+    this.LoginService.addCustservice(this.addUserFrm.value).subscribe(data=>{
+      console.log(data);  
+    })
   }
 }

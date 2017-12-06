@@ -3,7 +3,16 @@
 <div class="container">
     <br>
     <div class="card crd">
-        <h1 style="text-align:center">Edit User</h1><br>
+        <h1 style="text-align:center">Edit Customer</h1><br>
+        <div ngbDropdown style="text-align:right">
+          <button  ngbDropdownToggle class="btn btn-dark">Options</button>
+          <div ngbDropdownMenu>
+            <button class="dropdown-item">Add Deals</button>
+            <button class="dropdown-item">Edit Customer</button>
+            <button class="dropdown-item">Something else is here</button>
+          </div>
+        </div>
+    
       <div class="cad-body crd-bdy">
   
         <form [formGroup]="addUserFrm" (ngSubmit)="updateUser()" novalidate>

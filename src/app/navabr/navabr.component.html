@@ -12,9 +12,9 @@
             Deals
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" >Add Deal</a>
-            <a class="dropdown-item" >View Deal</a>
-            <a class="dropdown-item" >Edit Deal</a>
+            <a class="dropdown-item">Add Deal</a>
+            <a class="dropdown-item">View Deal</a>
+            <a class="dropdown-item" (click)="logout()">Edit Deal</a>
           </div>
         </div>
       </li>
@@ -22,12 +22,12 @@
         <div class="dropdown">
           <button class="btn btn-danger dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true"
             aria-expanded="false">
-           Merchant
+            Merchant
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item" >Add Merchant</a>
-            <a class="dropdown-item" >View Merchant</a>
-            <a class="dropdown-item" >Edit Merchant</a>
+            <a class="dropdown-item" [routerLink]="['/addMerchant']">Add Merchant</a>
+            <a class="dropdown-item" [routerLink]="['/viewMerchant']">View Merchant</a>
+            <a class="dropdown-item" [routerLink]="['/editMerchant']">Edit Merchant</a>
           </div>
         </div>
       </li>
@@ -39,7 +39,7 @@
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
             <a class="dropdown-item" [routerLink]="['/addcustomer']">Add Customer</a>
-            <a class="dropdown-item" >View Customer</a>
+            <a class="dropdown-item" [routerLink]="['/viewcustomer']">View Customer</a>
             <a class="dropdown-item" [routerLink]="['/editcustomer']">Edit Customer</a>
           </div>
         </div>

@@ -13,6 +13,11 @@ import { NavabrComponent } from './navabr/navabr.component';
 import { AddCustmomerComponent } from './add-custmomer/add-custmomer.component';
 import { ViewcustomerComponent } from './viewcustomer/viewcustomer.component';
 import { EditcustomerComponent } from './editcustomer/editcustomer.component';
+import { FileUploadComponent } from './file-upload/file-upload.component';
+import { HttpModule } from '@angular/http';
+import { AddMerchantComponent } from './Merchant/add-merchant/add-merchant.component';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+
 
 @NgModule({
   declarations: [
@@ -21,13 +26,18 @@ import { EditcustomerComponent } from './editcustomer/editcustomer.component';
     NavabrComponent,
     AddCustmomerComponent,
     ViewcustomerComponent,
-    EditcustomerComponent
+    EditcustomerComponent,
+    FileUploadComponent,
+    AddMerchantComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     MyRoutingModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpModule,
+    NgbModule.forRoot(),
+   
   ],
   providers: [LoginService],
   bootstrap: [AppComponent]

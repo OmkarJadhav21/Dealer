@@ -1,57 +1,78 @@
 <app-navabr></app-navabr>
 
-<div class="container">
-  <br>
-  <div class="card crd">
-      <h1 style="text-align:center">Add New User</h1><br>
-    <div class="cad-body crd-bdy">
+<div class="container mt-2">
+  <div class="card crd ">
+    <div class="col-md-12 row">
+      <div class="col-md-4">
+        <div class="card hq">
+          <img [src]="ImgUrl" class="profile-pic" alt="No Preview...">
+          <div class="profile-pic">
+            <span class="fa fa-camera"></span>
+            <span id="get_file" (click)="choosePhoto()">Change Image</span>
+            <span>
+              <input type="file" id="my_file" (change)="readUrl($event)" accept="image/x-png,image/gif,image/jpeg">
+            </span>
+          </div>
+        </div>
+        <div class="card crd-text">
+          <h3>
+            <b>Omkar Jadhav</b>
+          </h3>
+        </div>
+        <input type="button" class="btn btn-danger btn-sm mt-3" value="Upload">
+      </div>
+      <div class="col-md-8">
+        <h1 style="text-align:center">Merchant Registration</h1>
+        <br>
+        <div class="cad-body crd-bdy">
 
-      <form [formGroup]="addUserFrm" (ngSubmit)="submitUser()" novalidate>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <label>Email Id</label>
-            <input type="text" class="form-control" formControlName="email">
-            <span class="text-muted" *ngIf="!addUserFrm.controls.email.valid" >Enter Valid Email...</span>                        
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <label>Password</label>
-            <input type="text" class="form-control" formControlName="password">
-            <span class="text-muted" *ngIf="!addUserFrm.controls.password.valid">{{addUserFrm.controls.password.errors.myErr}}</span>            
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <label>Confirm Password</label>
-            <input type="text" class="form-control" formControlName="confPass">
-            
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <label>Mobile Number</label>
-            <input type="text" class="form-control"formControlName="mobileNo">
-            <span class="text-muted" *ngIf="!addUserFrm.controls.mobileNo.valid">{{addUserFrm.controls.mobileNo.errors.myErr}}</span>                        
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <label>City</label>
-            <input type="text" class="form-control"formControlName="city">
-          </div>
-        </div>
-        <div class="form-group row">
-          <div class="col-sm-10">
-            <label>OTP</label>
-            <input type="text" class="form-control"formControlName="otp">
-          </div>
-        </div>
-        <div class="col-sm-10">
-          <button type="submit" class="btn btn-primary">Add User</button>
-        </div>
-      </form>
+          <form [formGroup]="userRegisterFrm" (ngSubmit)="submitUser()" novalidate>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>Email Id</label>
+                <input type="text" class="form-control" formControlName="email">
+                <span class="text-muted" *ngIf="!userRegisterFrm.controls.email.valid">Enter Valid Email...</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>Password</label>
+                <input type="text" class="form-control" formControlName="password">
+                <span class="text-muted" *ngIf="!userRegisterFrm.controls.password.valid">{{userRegisterFrm.controls.password.errors.myErr}}</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>Confirm Password</label>
+                <input type="text" class="form-control" formControlName="confPass">
 
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>Mobile Number</label>
+                <input type="text" class="form-control" formControlName="mobileNo">
+                <span class="text-muted" *ngIf="!userRegisterFrm.controls.mobileNo.valid">{{userRegisterFrm.controls.mobileNo.errors.myErr}}</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>City</label>
+                <input type="text" class="form-control" formControlName="city">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>OTP</label>
+                <input type="text" class="form-control" formControlName="otp">
+              </div>
+            </div>
+            <div class="col-sm-10">
+              <button type="submit" class="btn btn-danger">Register</button>
+            </div>
+          </form>
+        </div>
+      </div>
     </div>
   </div>
 </div>

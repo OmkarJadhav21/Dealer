@@ -1,7 +1,55 @@
 .crd{
     background-color: #FAFAFA
 }
-.crd-bdy{
-    margin-left: 35%;
-    margin-right: 20%;
+.btn-danger{
+    background-color: #D83246;
+}
+.card{
+    box-shadow: 1px 5px 20px #EDEDED;
+}
+
+.card .hq{
+    position: relative;
+    padding-top:90%;
+    width:90%;
+    margin-top: 30%;
+}
+
+.hq .profile-pic{
+    position: absolute;
+    margin: auto;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 50%;
+    background-blend-mode: multiply;
+    text-align: center;
+    transition: all .3s ease;
+    text-decoration: none;
+    height: 60%;
+    width: 60%;
+    margin-top: 18%;
+    margin-bottom: 10%;
+    background-size: cover;
+    color: transparent;
+    background-repeat: no-repeat;    
+}
+.hq .profile-pic:hover {
+    background-color: rgba(0,0,0,.5);
+    z-index: 10000;
+    color: #fff;
+    transition: all .3s ease;
+    text-decoration: none;
+}
+.profile-pic span {
+    display: inline-block;
+    padding-top:43%;
+}
+#my_file {
+    display: none;
+}
+.crd-text{
+    text-align: center;
+    width: 90%;
 }

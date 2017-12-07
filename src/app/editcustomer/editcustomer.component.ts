@@ -9,9 +9,10 @@ import { Router } from '@angular/router';
 })
 export class EditcustomerComponent implements OnInit {
 
+  ImgUrl: any;
   addUserFrm: FormGroup;
   constructor(private fb: FormBuilder,
-              private router:Router) { }
+    private router: Router) { }
 
   ngOnInit() {
     this.addUserFrm = this.fb.group({
@@ -23,7 +24,7 @@ export class EditcustomerComponent implements OnInit {
         Validators.required,
         this.length8
       ])],
-      confPass: ['', Validators.required ],
+      confPass: ['', Validators.required],
       mobileNo: ['', Validators.compose([
         Validators.required,
         this.length10
@@ -32,19 +33,31 @@ export class EditcustomerComponent implements OnInit {
       otp: ['', Validators.required]
     })
   }
+
   length8(control: AbstractControl): ValidationErrors | null {
     return control.value.length >= 6 ? null : { myErr: 'Password must be 6 Characters' };
   }
+
   length10(control: AbstractControl): ValidationErrors | null {
     return control.value.length >= 10 ? null : { myErr: 'Number must be 10 Digits' };
   }
 
+  choosePhoto() {
+    document.getElementById('my_file').click();
+  }
+  readUrl(event: any) {
+    if (event.target.files && event.target.files[0]) {
+      var reader = new FileReader();
+      reader.onload = (event: any) => {
+        this.ImgUrl = event.target.result;
+      }
+      reader.readAsDataURL(event.target.files[0]);
+      console.log(event.target.files[0].name);
+    }
+  }
 
   updateUser() {
     console.log(this.addUserFrm);
-  }
-  cancel(){
-    this.router.navigate(['/navbar'])
   }
 
 }

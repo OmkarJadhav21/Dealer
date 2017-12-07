@@ -12,9 +12,9 @@
             Deals
           </button>
           <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-            <a class="dropdown-item">Add Deal</a>
-            <a class="dropdown-item">View Deal</a>
-            <a class="dropdown-item" (click)="logout()">Edit Deal</a>
+            <a class="dropdown-item" [routerLink]="['/adddeal']">Add Deal</a>
+            <a class="dropdown-item" [routerLink]="['/addMerchant']">View Deal</a>
+            <a class="dropdown-item" [routerLink]="['/addMerchant']">Edit Deal</a>
           </div>
         </div>
       </li>

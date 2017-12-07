@@ -17,6 +17,7 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
 import { HttpModule } from '@angular/http';
 import { AddMerchantComponent } from './Merchant/add-merchant/add-merchant.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { AddDealComponent } from './add-deal/add-deal.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
     ViewcustomerComponent,
     EditcustomerComponent,
     FileUploadComponent,
-    AddMerchantComponent
+    AddMerchantComponent,
+    AddDealComponent
   ],
   imports: [
     BrowserModule,

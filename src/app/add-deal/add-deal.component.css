@@ -1,0 +1,19 @@
+/* .data{
+    background-color: yellow;
+    height: 200px;
+    width: 300px;
+    
+} */
+img{
+    text-align: center;
+    height:100%;
+    width: 100%;
+    max-height:  300px;
+    max-width:400px;
+}   
+.input-group , .input-grouaddon{
+    max-width: 50%;
+}
+.card{
+    box-shadow: 1px 5px 20px #EDEDED;
+}

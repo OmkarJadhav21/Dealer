@@ -9,12 +9,12 @@ import { NgForm } from '@angular/forms';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
-loginSuccess;
-user;
-fun=false;
-funp=false;
+  loginSuccess;
+  user;
+  fun = false;
+  funp = false;
   constructor(private lgnSer: LoginService,
-              private router:Router) { }
+    private router: Router) { }
   ngOnInit() {
     this.lgnSer.lgncllbk(dt => {
       this.user = dt.user;
@@ -23,23 +23,27 @@ funp=false;
   }
   login(loginForm: NgForm) {
     this.lgnSer.loginSer(loginForm.value);
+    // this.lgnSer.loginAdmin(loginForm.value).subscribe(data=>{
+    //   console.log(data);
+    // })
   }
-  placeholderFun(z:string){
-    if(z=="u"){
-      this.fun=true
-      this.funp=false;
-    }else if(z=="p"){
-      this.funp=true
-      this.fun=false
+  placeholderFun(z: string) {
+    if (z == "u") {
+      this.fun = true
+      this.funp = false;
+    } else if (z == "p") {
+      this.funp = true
+      this.fun = false
     }
   }
-  placeholderF(z:string){
-    if(z=="u"){
-      this.fun=true
-      this.funp=false;
-    }else if(z=="p"){
-      this.funp=true
-      this.fun=false
+  placeholderF(z: string) {
+    if (z == "u") {
+      this.fun = true
+      this.funp = false;
+    } else if (z == "p") {
+      this.funp = true
+      this.fun = false
     }
   }
+
 }

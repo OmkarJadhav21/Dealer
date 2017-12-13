@@ -18,6 +18,8 @@ import { HttpModule } from '@angular/http';
 import { AddMerchantComponent } from './Merchant/add-merchant/add-merchant.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AddDealComponent } from './add-deal/add-deal.component';
+import { EditMerchantComponent } from './Merchant/edit-merchant/edit-merchant.component';
+import { ViewMerchantComponent } from './Merchant/view-merchant/view-merchant.component';
 
 
 @NgModule({
@@ -30,7 +32,9 @@ import { AddDealComponent } from './add-deal/add-deal.component';
     EditcustomerComponent,
     FileUploadComponent,
     AddMerchantComponent,
-    AddDealComponent
+    AddDealComponent,
+    EditMerchantComponent,
+    ViewMerchantComponent,
   ],
   imports: [
     BrowserModule,

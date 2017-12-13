@@ -2,66 +2,66 @@
 
 <div class="container">
   <h3 class="text-center mt-2 mb-2">Add Deal</h3>
-  
+
   <form [formGroup]="addDealFrm" (ngSubmit)="addDeal()" novalidate>
-  <div class="card mt-2">
-    <div class="col-md-12">
-      <div class="row">
-        <div class="col-md-6">
-          <div>
-            <img src="../../assets/online.jpg" alt="Loading image..." class="mb-3">
-            <input type="file">
-          </div>
-        </div>
-        <div class="col-md-6">
-          <div class="input-group mt-2">
-            <span class="input-group-addon fa fa-tag"></span>
-            <input type="text" class="form-control" formControlName="actualPrice" placeholder="Actual Price">
-            <span class="input-group-addon">Rs</span>
-          </div>
-          <div class="input-group mt-3">
-            <span class="input-group-addon fa fa-tags"></span>
-            <input type="text" class="form-control" formControlName="dealPrice" placeholder="Deal Price">
-            <span class="input-group-addon">Rs</span>
-          </div>
-          <div class="card mt-3 mb-3">
-            <div class="card-title alert alert-danger">
-              <b> Describe Your Product</b>
+    <div class="card mt-2">
+      <div class="col-md-12">
+        <div class="row">
+          <div class="col-md-6">
+            <div>
+              <img src="../../assets/online.jpg" alt="Loading image..." class="mb-3">
+              <input type="file">
             </div>
-            <div class="card-body">
-              <div class="card-text">
-                <textarea class="form-control w-100"cols="20" rows="4" formControlName="description"></textarea>
+          </div>
+          <div class="col-md-6">
+            <div class="input-group mt-2">
+              <span class="input-group-addon fa fa-tag"></span>
+              <input type="text" class="form-control" formControlName="actualPrice" placeholder="Actual Price">
+              <span class="input-group-addon">Rs</span>
+            </div>
+            <div class="input-group mt-3">
+              <span class="input-group-addon fa fa-tags"></span>
+              <input type="text" class="form-control" formControlName="dealPrice" placeholder="Deal Price">
+              <span class="input-group-addon">Rs</span>
+            </div>
+            <div class="card mt-3 mb-3">
+              <div class="card-title alert alert-danger">
+                <b> Describe Your Product</b>
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <textarea class="form-control w-100" cols="20" rows="4" formControlName="description"></textarea>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-  <div class="card mt-3">
-    <div class="card-title alert alert-danger">
-      <b> Detail</b>
+    <div class="card mt-3">
+      <div class="card-title alert alert-danger">
+        <b> Detail</b>
+      </div>
+      <div class="input-group mt-2 ml-5 ">
+        <span class="input-group-addon fa fa-location-arrow"></span>
+        <input type="text" class="form-control" formControlName="location" placeholder="Location">
+      </div>
+      <div class="input-group mt-3 ml-5">
+        <span class="input-group-addon fa fa-map-marker"></span>
+        <input type="text" class="form-control" formControlName="address" placeholder="Address">
+      </div>
+      <div class="input-group mt-3 ml-5 mb-3">
+        <span class="input-group-addon fa fa-mobile"></span>
+        <input type="text" class="form-control" formControlName="contact" placeholder="Contact">
+      </div>
     </div>
-    <div class="input-group mt-2 ml-5 ">
-      <span class="input-group-addon fa fa-location-arrow"></span>
-      <input type="text" class="form-control" formControlName="location" placeholder="Location">
+    <div class="form-check mb-2 mb-sm-3 text-center">
+      <label class="form-check-label">
+        <input class="form-check-input" type="checkbox">I accept all the Terms And Conditions.
+      </label>
     </div>
-    <div class="input-group mt-3 ml-5">
-      <span class="input-group-addon fa fa-map-marker"></span>
-      <input type="text" class="form-control" formControlName="address" placeholder="Address">
+    <div>
+      <input type="submit" class="btn btn-danger" value="Submit My Deal">
     </div>
-    <div class="input-group mt-3 ml-5 mb-3">
-      <span class="input-group-addon fa fa-mobile"></span>
-      <input type="text" class="form-control" formControlName="contact" placeholder="Contact">
-    </div>
-  </div>
-  <div class="form-check mb-2 mb-sm-3 text-center">
-    <label class="form-check-label">
-      <input class="form-check-input" type="checkbox">I accept all the Terms And Conditions.
-    </label>
-  </div>
-  <div>
-    <input type="submit" class="btn btn-danger" value="Submit My Deal">
-  </div>
-</form>
+  </form>
 </div>

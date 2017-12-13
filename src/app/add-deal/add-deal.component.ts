@@ -1,4 +1,4 @@
-import { FormGroup,FormBuilder } from '@angular/forms';
+import { FormGroup,FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -12,7 +12,12 @@ addDealFrm:FormGroup
 
   ngOnInit() {
     this.addDealFrm=this.fb.group({
-
+      actualPrice:['', Validators.required],
+      dealPrice:['',Validators.required],
+      description:['',Validators.required],
+      location:['',Validators.required],
+      address:['',Validators.required],
+      contact:['',Validators.required]
     })
   }
 addDeal(){

@@ -3,6 +3,9 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, ValidationErrors } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
 import { Validators } from '@angular/forms';
+// import { RequestOptions, Http } from '@angular/http';
+import { Http, Response, RequestOptions, Headers } from '@angular/http';
+import { Observable } from 'rxjs/Observable';
 
 @Component({
   selector: 'app-add-custmomer',
@@ -10,15 +13,19 @@ import { Validators } from '@angular/forms';
   styleUrls: ['./add-custmomer.component.css']
 })
 export class AddCustmomerComponent implements OnInit {
+  currentFileUpload: any;
   ImgUrl: any;
-  
+  userId="5a2942e895a1c35af9821dca";
+  selectedFiles;
+  ;
   userRegisterFrm: FormGroup;
   constructor(private fb: FormBuilder,
-              private LoginService:LoginService) { }
+              private LoginService:LoginService,
+            private http:Http) { }
 
   ngOnInit() {
     this.userRegisterFrm = this.fb.group({
-      email: ['', Validators.compose([
+      emailId: ['', Validators.compose([
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
       )],
@@ -31,8 +38,9 @@ export class AddCustmomerComponent implements OnInit {
         Validators.required,
         this.length10
       ])],
-      city: ['', Validators.required],
-      otp: ['', Validators.required]
+      location: ['', Validators.required],
+      otp: ['', Validators.required],
+      image:""
     })
   }
   length8(control: AbstractControl): ValidationErrors | null {
@@ -60,4 +68,27 @@ export class AddCustmomerComponent implements OnInit {
       console.log(data);  
     })
   }
+  merchntImg(formData){
+    this.ImgUrl=event.target;
+        console.log(this.ImgUrl );
+
+    this.userId=this.userId;
+    // this.LoginService.merchantImg(this.ImgUrl.value,this.userId.value)
+    // .subscribe(data=>{
+    //   console.log(data);  
+    // })
+  }
+  fileChange(event) {  
+      // this.selectedFiles = event.target.files;
+      // console.log(this.selectedFiles);
+      
+    }
+    
+    upload() {
+  
+      // this.currentFileUpload = this.selectedFiles.item(0)
+      // // console.log("In Upload fun", this.currentFileUpload);
+      // this.LoginService.merchantImg(this.currentFileUpload).subscribe(res =>console.log(res));
+    }
 }
+

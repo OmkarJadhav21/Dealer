@@ -1,8 +1,7 @@
 import { LoginService } from '../../AllServices/login.service'
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, AbstractControl, ValidationErrors } from '@angular/forms';
+import { FormGroup, AbstractControl, ValidationErrors, Validators } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
-import { Validators } from '@angular/forms';
 // import { RequestOptions, Http } from '@angular/http';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
@@ -16,7 +15,10 @@ export class AddMerchantComponent implements OnInit {
   ImgUrl: any;
   userId = "5a2942e895a1c35af9821dca";
   selectedFiles;
-  ;
+  alert: boolean = false;
+  alertf: boolean = false;
+  image;
+
   userRegisterFrm: FormGroup;
   constructor(private fb: FormBuilder,
     private LoginService: LoginService,
@@ -24,6 +26,7 @@ export class AddMerchantComponent implements OnInit {
 
   ngOnInit() {
     this.userRegisterFrm = this.fb.group({
+      name: ['', Validators.required],
       emailId: ['', Validators.compose([
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
@@ -39,7 +42,9 @@ export class AddMerchantComponent implements OnInit {
       ])],
       location: ['', Validators.required],
       otp: ['', Validators.required],
-      image: ""
+      image: [''],
+      merchant: [''],
+      merchantApproved:['']
     })
   }
   length8(control: AbstractControl): ValidationErrors | null {
@@ -57,39 +62,24 @@ export class AddMerchantComponent implements OnInit {
       reader.onload = (event: any) => {
         this.ImgUrl = event.target.result;
       }
-      console.log(this.ImgUrl);
       reader.readAsDataURL(event.target.files[0]);
-      // console.log(event.target.files[0].name);
+      this.image=event.target.files[0]
     }
   }
 
   submitUser() {
     this.LoginService.addCustservice(this.userRegisterFrm.value).subscribe(data => {
-      console.log(data);
+      if (data.json().status == "success") {
+        this.alert = true
+        this.alertf = false;
+      } else {
+        this.alertf = true
+        this.alert = false;
+      }
     })
   }
-  merchntImg(formData) {
-    this.ImgUrl = event.target;
-    console.log(this.ImgUrl);
 
-    this.userId = this.userId;
-    // this.LoginService.merchantImg(this.ImgUrl.value,this.userId.value)
-    // .subscribe(data=>{
-    //   console.log(data);  
-    // })
-  }
-  fileChange(event) {
-    this.selectedFiles = event.target.files;
-    console.log(this.selectedFiles);
-
-  }
   upload() {
-
-    this.currentFileUpload = this.selectedFiles.item(0)
-    // console.log("In Upload fun", this.currentFileUpload);
-
-    this.LoginService.merchantImg(this.currentFileUpload).subscribe(res => console.log(res));
-
-    // this.selectedFiles = undefined
+    this.LoginService.merchantImg(this.image).subscribe(res => console.log(res));
   }
 }

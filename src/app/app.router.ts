@@ -8,6 +8,7 @@ import { AddDealComponent } from './add-deal/add-deal.component';
 import { ViewMerchantComponent } from './Merchant/view-merchant/view-merchant.component';
 import { EditMerchantComponent } from './Merchant/edit-merchant/edit-merchant.component';
 import { AddMerchantComponent } from './Merchant/add-merchant/add-merchant.component';
+import { ViewDealComponent } from './view-deal/view-deal.component';
 
 const routes:Routes=[
     { path:'',redirectTo:'/login',pathMatch:'full'},
@@ -16,14 +17,19 @@ const routes:Routes=[
     { path:'navbar',component:NavabrComponent},
 
     { path:'addcustomer',component:AddCustmomerComponent},
-    { path:'editcustomer',component:EditcustomerComponent},
+    { path:'editcustomer',component:EditcustomerComponent,pathMatch:'full'},
+    { path:'editcustomer/:id',component:EditcustomerComponent},
     { path:'viewcustomer',component:ViewcustomerComponent},
+    
 
     { path:'addmerchant',component:AddMerchantComponent},
-    { path:'editmerchant',component:EditMerchantComponent},
+    { path:'editmerchant',component:EditMerchantComponent,pathMatch:'full'},    
+    { path:'editmerchant/:id',component:EditMerchantComponent},
     { path:'viewmerchant',component:ViewMerchantComponent},
     
-    { path:'adddeal',component:AddDealComponent},
+    { path:'adddeal',component:AddDealComponent,pathMatch:'full'},
+    { path:'adddeal/:id',component:AddDealComponent},
+    { path:'viewdeal',component:ViewDealComponent},
     
     
 ];

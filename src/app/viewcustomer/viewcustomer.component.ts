@@ -20,10 +20,6 @@ export class ViewcustomerComponent implements OnInit {
   }
 
   viewCustomer(id) {
-    console.log(id);
-    this.ser.getById(id).subscribe(data => {
-      console.log(data);
-
-    })
-  }
+    this.router.navigate(['/editcustomer',id]);
+}
 }

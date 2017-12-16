@@ -6,25 +6,32 @@
     </div>
     <div class="row">
         <div class="col-md-3" *ngFor="let item of list">
-            <div class="card" style="text-align:center;margin-bottom:2%;margin-top:2%;" (click)="viewCustomer(item.id)">
-                <div>
+            <div class="card" style="text-align:center;margin-bottom:2%;margin-top:2%;" >
+                <div (click)="viewCustomer(item.id)">
                     <img src="../../assets/smuser.png" alt="Card image cap">
                 </div>
                 <div class="card-body">
-                    <h4 class="card-title">{{item.emailId}}</h4>
+                    <h6 class="card-title"><b>{{item.name}}</b></h6>
                 </div>
-                <div class="card-footer">
-                    <div class="pull-right" style="margin-top:-2%">
-                        <button class="btn btn-light btn-sm" [routerLink]="['/adddeal']">
+                <div class="card-footer" style="margin-top: -25px;">
+                    <div class="pull-right" style="margin-top:-2%" *ngIf=item.merchantApproved>
+                        <button class="btn btn-light btn-sm" (click)="prticlrMerchantDeal(item.id)">
                             <i class="fa fa-plus" aria-hidden="true">&nbsp;Add Deals</i>
                         </button>
                     </div>
-                    <div style="text-align:left;color:green">
-                        <i class="fa fa-check" aria-hidden="true">Verified</i>
+                    <div style="text-align:left;color:green" *ngIf=item.merchantApproved>
+                        <i class="fa fa-check" aria-hidden="true" >Verified</i>
+                    </div>
+                    <div *ngIf=!item.merchantApproved>
+                        <button class="btn btn-light btn-sm float-left text-success" (click)="approveMerchant(true,item.id)">
+                            <i class="fa fa-check-square" aria-hidden="true">&nbsp;Approve</i>
+                        </button>
+                        <button class="btn btn-light btn-sm float-right text-danger" (click)="deleteMerchant(item.id)">
+                            <i class="fa fa-times" aria-hidden="true">&nbsp;Reject</i>
+                        </button>                       
                     </div>
                 </div>
             </div>
         </div>
-
     </div>
 </div>

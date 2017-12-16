@@ -20,6 +20,9 @@ import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import { AddDealComponent } from './add-deal/add-deal.component';
 import { EditMerchantComponent } from './Merchant/edit-merchant/edit-merchant.component';
 import { ViewMerchantComponent } from './Merchant/view-merchant/view-merchant.component';
+import { DealServiceService } from './AllServices/deal-service.service';
+import { ViewDealComponent } from './view-deal/view-deal.component';
+import { ApproveService } from './AllServices/approve.service';
 
 
 @NgModule({
@@ -35,6 +38,7 @@ import { ViewMerchantComponent } from './Merchant/view-merchant/view-merchant.co
     AddDealComponent,
     EditMerchantComponent,
     ViewMerchantComponent,
+    ViewDealComponent,
   ],
   imports: [
     BrowserModule,
@@ -45,7 +49,7 @@ import { ViewMerchantComponent } from './Merchant/view-merchant/view-merchant.co
     NgbModule.forRoot(),
    
   ],
-  providers: [LoginService],
+  providers: [LoginService,DealServiceService,ApproveService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

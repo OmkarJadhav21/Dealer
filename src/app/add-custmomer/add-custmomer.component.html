@@ -7,21 +7,16 @@
       <div class="col-md-12 row">
         <div class="col-md-4">
           <div class="form-group">
-          <div class="card hq">
-            <img [src]="ImgUrl" class="profile-pic" alt="No Preview...">
-            <div class="profile-pic">
-              <span class="fa fa-camera"></span>
-              <span id="get_file" (click)="choosePhoto()">Change Image</span>
-              <span>
-                <input type="file" id="my_file" (change)="readUrl($event)" accept="image/x-png,image/gif,image/jpeg" formControlName="image">
-              </span>
+            <div class="card hq">
+              <img src="{{ImgUrl}}" class="profile-pic" alt="">
+              <div class="profile-pic">
+                <span class="fa fa-camera"></span>
+                <span id="get_file" (click)="choosePhoto()">Change Image</span>
+                <span>
+                  <input type="file" id="my_file" (change)="readUrl($event)" accept="image/x-png,image/gif,image/jpeg" formControlName="image">
+                </span>
+              </div>
             </div>
-          </div>
-        </div>
-          <div class="card crd-text">
-            <h3>
-              <b>Omkar Jadhav</b>
-            </h3>
           </div>
           <input type="button" class="btn btn-danger btn-sm mt-3" value="Upload" (click)="upload()">
         </div>
@@ -29,26 +24,18 @@
           <h1 style="text-align:center">Customer Registration</h1>
           <br>
           <div class="cad-body crd-bdy">
-
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>Name</label>
+                <input type="text" class="form-control" formControlName="name">
+                <span class="text-muted" *ngIf="!userRegisterFrm.controls.name.valid">Enter Name...</span>
+              </div>
+            </div>
             <div class="form-group row">
               <div class="col-sm-10">
                 <label>Email Id</label>
                 <input type="text" class="form-control" formControlName="emailId">
                 <span class="text-muted" *ngIf="!userRegisterFrm.controls.emailId.valid">Enter Valid Email...</span>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <label>Password</label>
-                <input type="text" class="form-control" formControlName="password">
-                <span class="text-muted" *ngIf="!userRegisterFrm.controls.password.valid">{{userRegisterFrm.controls.password.errors.myErr}}</span>
-              </div>
-            </div>
-            <div class="form-group row">
-              <div class="col-sm-10">
-                <label>Confirm Password</label>
-                <input type="text" class="form-control" formControlName="confPass">
-
               </div>
             </div>
             <div class="form-group row">
@@ -66,12 +53,31 @@
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
+                <label>Password</label>
+                <input type="password" class="form-control" formControlName="password">
+                <span class="text-muted" *ngIf="!userRegisterFrm.controls.password.valid">{{userRegisterFrm.controls.password.errors.myErr}}</span>
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
+                <label>Confirm Password</label>
+                <input type="password" class="form-control" formControlName="confPass">
+              </div>
+            </div>
+            <div class="form-group row">
+              <div class="col-sm-10">
                 <label>OTP</label>
                 <input type="text" class="form-control" formControlName="otp">
               </div>
             </div>
             <div class="col-sm-10">
-              <button type="submit" class="btn btn-danger">Register</button>
+              <button type="submit" class="btn btn-danger" [disabled]="!userRegisterFrm.valid">Register</button>
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="alert">
+              Registration Successful !!!
+            </div>
+            <div class="alert alert-danger" role="alert" *ngIf="alertf">
+              Registration Failed !!!
             </div>
           </div>
         </div>

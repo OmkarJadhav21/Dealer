@@ -15,34 +15,37 @@ import { Observable } from 'rxjs/Observable';
 export class AddCustmomerComponent implements OnInit {
   currentFileUpload: any;
   ImgUrl: any;
-  userId="5a2942e895a1c35af9821dca";
   selectedFiles;
-  ;
+  alert: boolean = false;
+  alertf: boolean = false;
   userRegisterFrm: FormGroup;
   constructor(private fb: FormBuilder,
-              private LoginService:LoginService,
-            private http:Http) { }
+    private LoginService: LoginService,
+    private http: Http) { }
 
   ngOnInit() {
     this.userRegisterFrm = this.fb.group({
+      name: ['', Validators.required],
       emailId: ['', Validators.compose([
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
       )],
-      password: ['', Validators.compose([
-        Validators.required,
-        this.length8
-      ])],
-      confPass: ['', Validators.required ],
+      location: ['', Validators.required],
+      otp: ['', Validators.required],
+      confPass: ['', Validators.required],
       mobileNo: ['', Validators.compose([
         Validators.required,
         this.length10
       ])],
-      location: ['', Validators.required],
-      otp: ['', Validators.required],
-      image:""
+      password: ['', Validators.compose([
+        Validators.required,
+        this.length8
+      ])],
+
+      image: ""
     })
   }
+
   length8(control: AbstractControl): ValidationErrors | null {
     return control.value.length >= 6 ? null : { myErr: 'Password must be 6 Characters' };
   }
@@ -59,36 +62,43 @@ export class AddCustmomerComponent implements OnInit {
         this.ImgUrl = event.target.result;
       }
       reader.readAsDataURL(event.target.files[0]);
-      console.log(event.target.files[0].name);
+
+      console.log(event.target.files[0]);
     }
   }
 
   submitUser() {
-    this.LoginService.addCustservice(this.userRegisterFrm.value).subscribe(data=>{
-      console.log(data);  
+    this.LoginService.addCustservice(this.userRegisterFrm.value).subscribe(data => {
+      if (data.json().status == "success") {
+        this.alert = true
+        this.alertf = false;
+      } else {
+        this.alertf = true
+        this.alert = false;
+      }
     })
-  }
-  merchntImg(formData){
-    this.ImgUrl=event.target;
-        console.log(this.ImgUrl );
+    this.userRegisterFrm.reset();
 
-    this.userId=this.userId;
+  }
+  merchntImg(formData) {
+    this.ImgUrl = event.target;
+    console.log(this.ImgUrl);
     // this.LoginService.merchantImg(this.ImgUrl.value,this.userId.value)
     // .subscribe(data=>{
     //   console.log(data);  
     // })
   }
-  fileChange(event) {  
-      // this.selectedFiles = event.target.files;
-      // console.log(this.selectedFiles);
-      
-    }
-    
-    upload() {
-  
-      // this.currentFileUpload = this.selectedFiles.item(0)
-      // // console.log("In Upload fun", this.currentFileUpload);
-      // this.LoginService.merchantImg(this.currentFileUpload).subscribe(res =>console.log(res));
-    }
+  fileChange(event) {
+    // this.selectedFiles = event.target.files;
+    // console.log(this.selectedFiles);
+
+  }
+
+  upload() {
+
+    // this.currentFileUpload = this.selectedFiles.item(0)
+    // // console.log("In Upload fun", this.currentFileUpload);
+    // this.LoginService.merchantImg(this.currentFileUpload).subscribe(res =>console.log(res));
+  }
 }
 

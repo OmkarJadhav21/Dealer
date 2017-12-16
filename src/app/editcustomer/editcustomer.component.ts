@@ -1,6 +1,8 @@
+import { LoginService } from './../AllServices/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-editcustomer',
@@ -12,25 +14,43 @@ export class EditcustomerComponent implements OnInit {
   ImgUrl: any;
   addUserFrm: FormGroup;
   constructor(private fb: FormBuilder,
-    private router: Router) { }
-
+    private router: Router,
+    private ser: LoginService,
+    public asRt: ActivatedRoute) { }
+  name;
+  mail;
+  password;
+  mobileNo;
+  city;
+  id
   ngOnInit() {
+
+
+    this.asRt.params.subscribe(params => {
+      this.id = params['id']
+    })
+    this.ser.getById(this.id).subscribe(dt => {
+      this.name = dt.json().result.name;      
+      this.mail = dt.json().result.emailId;
+      this.mobileNo = dt.json().result.mobileNo;
+      // this.password = dt.json().result.password;
+      this.city = dt.json().result.location;
+
+    })
+
     this.addUserFrm = this.fb.group({
+      name:['',Validators.required],
       email: ['', Validators.compose([
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
       )],
-      password: ['', Validators.compose([
-        Validators.required,
-        this.length8
-      ])],
-      confPass: ['', Validators.required],
+      password: [''],
+      confPass: [''],
       mobileNo: ['', Validators.compose([
         Validators.required,
         this.length10
       ])],
       city: ['', Validators.required],
-      otp: ['', Validators.required]
     })
   }
 
@@ -57,7 +77,14 @@ export class EditcustomerComponent implements OnInit {
   }
 
   updateUser() {
-    console.log(this.addUserFrm);
+    var frm = this.addUserFrm.value;
+    console.log("frmmm", frm.value.email)
+    //  this.addUserFrm.setValue({
+    //    email:frm.value.email
+    //  })
+    // this.ser.addCustservice(this.addUserFrm).subscribe(data => {
+    //   console.log(data);
+    // })
   }
 
 }

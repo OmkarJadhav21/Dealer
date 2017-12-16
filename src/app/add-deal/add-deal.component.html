@@ -2,9 +2,13 @@
 
 <div class="container">
   <h3 class="text-center mt-2 mb-2">Add Deal</h3>
-
+  <h2>{{countDown | async}}</h2>
+  
   <form [formGroup]="addDealFrm" (ngSubmit)="addDeal()" novalidate>
     <div class="card mt-2">
+      <a class="text-right">
+        <span class="fa fa-eye mr-3">View My Deals</span>
+      </a>
       <div class="col-md-12">
         <div class="row">
           <div class="col-md-6">
@@ -21,7 +25,7 @@
             </div>
             <div class="input-group mt-3">
               <span class="input-group-addon fa fa-tags"></span>
-              <input type="text" class="form-control" formControlName="dealPrice" placeholder="Deal Price">
+              <input type="text" class="form-control" formControlName="discountedPrice" placeholder="Deal Price">
               <span class="input-group-addon">Rs</span>
             </div>
             <div class="card mt-3 mb-3">
@@ -52,16 +56,16 @@
       </div>
       <div class="input-group mt-3 ml-5 mb-3">
         <span class="input-group-addon fa fa-mobile"></span>
-        <input type="text" class="form-control" formControlName="contact" placeholder="Contact">
+        <input type="text" class="form-control" formControlName="mobileNo" placeholder="Mobile Number">
       </div>
     </div>
     <div class="form-check mb-2 mb-sm-3 text-center">
       <label class="form-check-label">
-        <input class="form-check-input" type="checkbox">I accept all the Terms And Conditions.
+        <input class="form-check-input" type="checkbox" #chkbox (change)="changbox(chkbox.checked)">I accept all the Terms And Conditions.
       </label>
     </div>
     <div>
-      <input type="submit" class="btn btn-danger" value="Submit My Deal">
+      <input type="submit" class="btn btn-danger" [disabled]="!check" value="Submit My Deal">
     </div>
   </form>
 </div>

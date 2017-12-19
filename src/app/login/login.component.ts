@@ -16,16 +16,15 @@ export class LoginComponent implements OnInit {
   constructor(private lgnSer: LoginService,
     private router: Router) { }
   ngOnInit() {
-    this.lgnSer.lgncllbk(dt => {
-      this.user = dt.user;
-      this.loginSuccess = dt.success;
-    })
+    // this.lgnSer.lgncllbk(dt => {
+    //   this.user = dt.user;
+    //   this.loginSuccess = dt.success;
+    // })
   }
   login(loginForm: NgForm) {
-    this.lgnSer.loginSer(loginForm.value);
-    // this.lgnSer.loginAdmin(loginForm.value).subscribe(data=>{
-    //   console.log(data);
-    // })
+    this.lgnSer.loginSer(loginForm.value).subscribe(data=>{
+        this.router.navigate(['/merchantList'])
+    });
   }
   placeholderFun(z: string) {
     if (z == "u") {
@@ -45,5 +44,7 @@ export class LoginComponent implements OnInit {
       this.fun = false
     }
   }
-
+  withFacebook(){
+    this.lgnSer.facebookLogin()
+  }
 }

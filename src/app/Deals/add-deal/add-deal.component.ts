@@ -1,9 +1,9 @@
 import { ActivatedRoute } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Component, OnInit } from '@angular/core';
-import { DealServiceService } from '../AllServices/deal-service.service';
 
 import {Observable} from 'rxjs/Rx';
+import { DealServiceService } from '../../AllServices/deal-service.service';
 
 @Component({
   selector: 'app-add-deal',

@@ -1,8 +1,8 @@
-import { LoginService } from './../AllServices/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
 import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
+import { LoginService } from '../../AllServices/login.service';
 
 @Component({
   selector: 'app-editcustomer',

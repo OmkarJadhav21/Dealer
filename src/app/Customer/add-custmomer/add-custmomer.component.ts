@@ -1,4 +1,3 @@
-import { LoginService } from './../AllServices/login.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, AbstractControl, ValidationErrors } from '@angular/forms';
 import { FormBuilder } from '@angular/forms';
@@ -6,6 +5,7 @@ import { Validators } from '@angular/forms';
 // import { RequestOptions, Http } from '@angular/http';
 import { Http, Response, RequestOptions, Headers } from '@angular/http';
 import { Observable } from 'rxjs/Observable';
+import { LoginService } from '../../AllServices/login.service';
 
 @Component({
   selector: 'app-add-custmomer',
@@ -67,19 +67,19 @@ export class AddCustmomerComponent implements OnInit {
     }
   }
 
-  submitUser() {
-    this.LoginService.addCustservice(this.userRegisterFrm.value).subscribe(data => {
-      if (data.json().status == "success") {
-        this.alert = true
-        this.alertf = false;
-      } else {
-        this.alertf = true
-        this.alert = false;
-      }
-    })
-    this.userRegisterFrm.reset();
+  // submitUser() {
+  //   this.LoginService.addCustservice(this.userRegisterFrm.value).subscribe(data => {
+  //     if (data.json().status == "success") {
+  //       this.alert = true
+  //       this.alertf = false;
+  //     } else {
+  //       this.alertf = true
+  //       this.alert = false;
+  //     }
+  //   })
+  //   this.userRegisterFrm.reset();
 
-  }
+  // }
   merchntImg(formData) {
     this.ImgUrl = event.target;
     console.log(this.ImgUrl);

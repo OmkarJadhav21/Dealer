@@ -13,11 +13,11 @@
         <div class="col-md-6 mx-auto">
           <form #loginForm="ngForm" (ngSubmit)="login(loginForm)">
             <div class="form-group">
-              <input type="text" name="Username" class="form-control" (click)="placeholderF('u')" required ngModel>
-              <label [ngClass]="{'place':fun,'form-control-placeholder':true}" (click)="placeholderFun('u')">Username</label>
+              <input type="text" name="emailId" class="form-control" (click)="placeholderF('u')" required ngModel>
+              <label [ngClass]="{'place':fun,'form-control-placeholder':true}" (click)="placeholderFun('u')">Email</label>
             </div>
             <div class="form-group">
-              <input type="password" name="Password" class="form-control" (click)="placeholderF('p')" required ngModel>
+              <input type="password" name="password" class="form-control" (click)="placeholderF('p')" required ngModel>
               <label [ngClass]="{'place':funp,'form-control-placeholder':true}" (click)="placeholderFun('p')">Password</label>
             </div>
             <div>
@@ -36,7 +36,7 @@
       </div>
       <hr>
       <div style="margin-left: 46%;">
-        <button type="text" class="fa fa-facebook"></button>
+        <button type="text" class="fa fa-facebook" (click)="withFacebook()"></button>
       </div>
     </div>
 

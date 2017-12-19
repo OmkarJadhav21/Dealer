@@ -19,5 +19,10 @@ export class DealServiceService {
       return res;
     })
   }
+  getAllDeal(){
+   return this.http.get(this.linkhit+'/getAllDeals').map(res=>{
+      return res;
+    })
+  }
 
 }

@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators, AbstractControl, ValidationErrors } from '@angular/forms';
-import { LoginService } from '../AllServices/login.service';
+import { LoginService } from '../../AllServices/login.service';
 
 @Component({
   selector: 'app-viewcustomer',

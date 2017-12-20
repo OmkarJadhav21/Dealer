@@ -31,15 +31,9 @@ export class AddMerchantComponent implements OnInit {
         Validators.required,
         Validators.pattern("[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?")]
       )],
-      password: ['', Validators.compose([
-        Validators.required,
-        this.length8
-      ])],
+      password: ['',[Validators.required,Validators.minLength(5)]],
       confPass: ['', Validators.required],
-      mobileNo: ['', Validators.compose([
-        Validators.required,
-        this.length10
-      ])],
+      mobileNo: ['',[Validators.required,Validators.maxLength(10)]],
       location: ['', Validators.required],
       otp: ['', Validators.required],
       image: [''],
@@ -47,12 +41,7 @@ export class AddMerchantComponent implements OnInit {
       merchantApproved:['']
     })
   }
-  length8(control: AbstractControl): ValidationErrors | null {
-    return control.value.length >= 6 ? null : { myErr: 'Password must be 6 Characters' };
-  }
-  length10(control: AbstractControl): ValidationErrors | null {
-    return control.value.length >= 10 ? null : { myErr: 'Number must be 10 Digits' };
-  }
+
   choosePhoto() {
     document.getElementById('my_file').click();
   }

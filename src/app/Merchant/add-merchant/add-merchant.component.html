@@ -13,7 +13,7 @@
                 <span class="fa fa-camera"></span>
                 <span id="get_file" (click)="choosePhoto()">Change Image</span>
                 <span>
-                  <input type="file" id="my_file" (change)="readUrl($event)"  class="form-control" formControlName="image" accept="image/x-png,image/gif,image/jpeg">
+                  <input type="file" id="my_file" (change)="readUrl($event)" class="form-control" formControlName="image" accept="image/x-png,image/gif,image/jpeg">
                 </span>
               </div>
             </div>
@@ -28,34 +28,66 @@
               <div class="col-sm-10">
                 <label>Name</label>
                 <input type="text" class="form-control" formControlName="name">
-                <span class="text-muted" *ngIf="!userRegisterFrm.controls.name.valid">Enter Name..</span>
+                <div *ngIf="userRegisterFrm.controls.name.invalid && (userRegisterFrm.controls.name.dirty || userRegisterFrm.controls.name.touched)"
+                  class="error-msg">
+                  <div *ngIf="userRegisterFrm.controls.name.errors.required">
+                    Name is required.
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
                 <label>Email Id</label>
                 <input type="text" class="form-control" formControlName="emailId">
-                <span class="text-muted" *ngIf="!userRegisterFrm.controls.emailId.valid">Enter Valid Email...</span>
+                <div *ngIf="userRegisterFrm.controls.emailId.invalid && (userRegisterFrm.controls.emailId.dirty || userRegisterFrm.controls.emailId.touched)"
+                  class="error-msg">
+                  <div *ngIf="!userRegisterFrm.controls.emailId.valid" class="error-msg">
+                    Enter Valid email
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
                 <label>Mobile Number</label>
                 <input type="text" class="form-control" formControlName="mobileNo">
-                <span class="text-muted" *ngIf="!userRegisterFrm.controls.mobileNo.valid">{{userRegisterFrm.controls.mobileNo.errors.myErr}}</span>
+                <div *ngIf="userRegisterFrm.controls.mobileNo.invalid && (userRegisterFrm.controls.mobileNo.dirty || userRegisterFrm.controls.mobileNo.touched)"
+                  class="error-msg">
+                  <div *ngIf="userRegisterFrm.controls.mobileNo.errors.required">
+                    Mobile number required.
+                  </div>
+                  <div *ngIf="userRegisterFrm.controls.mobileNo.errors.maxlength" class="error-msg">
+                    Only 10 Digits required
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
                 <label>City</label>
                 <input type="text" class="form-control" formControlName="location">
+                <div *ngIf="userRegisterFrm.controls.location.invalid && (userRegisterFrm.controls.location.dirty || userRegisterFrm.controls.location.touched)"
+                  class="error-msg">
+                  <div *ngIf="userRegisterFrm.controls.location.errors.required">
+                    Enter City...
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
               <div class="col-sm-10">
                 <label>Password</label>
                 <input type="password" class="form-control" formControlName="password">
-                <span class="text-muted" *ngIf="!userRegisterFrm.controls.password.valid">{{userRegisterFrm.controls.password.errors.myErr}}</span>
+                <div *ngIf="userRegisterFrm.controls.password.invalid && (userRegisterFrm.controls.password.dirty || userRegisterFrm.controls.password.touched)"
+                  class="error-msg">
+                  <div *ngIf="userRegisterFrm.controls.password.errors.required">
+                    Password required.
+                  </div>
+                  <div *ngIf="userRegisterFrm.controls.password.errors.minlength" class="error-msg">
+                    Minimum Length is 5
+                  </div>
+                </div>
               </div>
             </div>
             <div class="form-group row">
